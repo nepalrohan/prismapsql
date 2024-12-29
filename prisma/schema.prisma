@@ -19,6 +19,7 @@ model User {
   password  String
   firstname String?
   lastname  String?
+  email  String @unique
 }
 
 model Todo {
@@ -28,3 +29,5 @@ model Todo {
   done        Boolean @default(false)
   userId      Int
 }
+
+
