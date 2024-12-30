@@ -38,4 +38,35 @@ function getTodos(userId) {
         console.log(response);
     });
 }
-getTodos(1);
+// getTodos(1);
+//create todos
+function createTodos(title, description, userId) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield prisma.todo.create({
+            data: {
+                title: title,
+                description: description,
+                userId: userId
+            }
+        });
+    });
+}
+// createTodos("John don hain", "I am a boy from palpa currently living in butwal, haha",1);
+//get todos and user details
+function getTodosanduser(userId) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield prisma.todo.findMany({
+            where: {
+                userId: userId
+            },
+            select: {
+                id: true,
+                title: true,
+                description: true,
+                user: true
+            }
+        });
+        console.log(response);
+    });
+}
+getTodosanduser(1);

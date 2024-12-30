@@ -45,4 +45,46 @@ async function getTodos (userId:number){
 
 
 
-getTodos(1);
+// getTodos(1);
+
+
+//create todos
+
+async function createTodos (title:string,
+    description:string,
+    userId:number
+){
+
+    await prisma.todo.create({
+        data:{
+            title: title,
+            description:description,
+            userId:userId
+        }
+    })
+
+}
+
+// createTodos("John don hain", "I am a boy from palpa currently living in butwal, haha",1);
+
+//get todos and user details
+
+
+async function getTodosanduser (userId:number){
+
+    const response = await prisma.todo.findMany({
+        where:{
+            userId:userId
+        },
+        select:{
+            id:true,
+            title:true,
+            description:true,
+            user:true
+        }
+    })
+    
+    console.log(response);
+}
+
+getTodosanduser(1);
