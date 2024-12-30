@@ -23,6 +23,7 @@ model User {
   todos   Todo[]
 }
 
+
 model Todo {
   id          Int     @default(autoincrement())
   title       String  @unique
